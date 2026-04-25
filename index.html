@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מוזסון — כוח אדם לבניין</title>
+<meta name="description" content="מוזסון — חברת כוח אדם מקצועית לענף הבנייה. עובדים מיומנים, אחריות מלאה, זמינות מיידית.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Heebo:wght@400;700;900&family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --ink: #161616;
+  --orange: #ff6b1a;
+  --orange-bright: #ff8533;
+  --bone: #f4f1ea;
+  --line: rgba(255, 107, 26, 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Rubik', 'Heebo', sans-serif;
+  background: var(--black);
+  color: var(--bone);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+/* HAZARD STRIPE */
+.hazard {
+  height: 14px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--orange) 0 20px,
+    var(--black) 20px 40px
+  );
+}
+
+/* NAVIGATION */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  display: grid;
+  place-items: center;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--black);
+  font-size: 1.5rem;
+  transform: rotate(-3deg);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--bone);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--orange); }
+
+.nav-cta {
+  background: var(--orange);
+  color: var(--black);
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+.nav-cta:hover { transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
+/* HERO */
+.hero {
+  min-height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(255, 107, 26, 0.15), transparent 60%),
+    linear-gradient(135deg, var(--ink) 0%, var(--black) 100%);
+  z-index: -2;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  z-index: -1;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.hero-content { max-width: 1200px; margin: 0 auto; width: 100%; }
+
+.hero-tag {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--black);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 1rem;
+  margin-bottom: 1.5rem;
+  transform: rotate(-1deg);
+  animation: slideIn 0.6s ease-out;
+}
+
+h1 {
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  animation: slideIn 0.7s ease-out 0.1s backwards;
+}
+
+h1 .accent {
+  color: var(--orange);
+  position: relative;
+  display: inline-block;
+}
+
+h1 .accent::after {
+  content: '';
+  position: absolute;
+  bottom: 0.05em;
+  right: 0;
+  width: 100%;
+  height: 0.15em;
+  background: var(--orange);
+  opacity: 0.3;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
+  color: rgba(244, 241, 234, 0.75);
+  margin-bottom: 2.5rem;
+  animation: slideIn 0.7s ease-out 0.2s backwards;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: slideIn 0.7s ease-out 0.3s backwards;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--black);
+}
+
+.btn-primary:hover {
+  background: var(--orange-bright);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 107, 26, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--bone);
+  border-color: var(--bone);
+}
+
+.btn-ghost:hover {
+  background: var(--bone);
+  color: var(--black);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* STATS BAR */
+.stats {
+  background: var(--orange);
+  color: var(--black);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  border-top: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+}
+
+.stat {
+  text-align: center;
+  border-left: 2px solid var(--black);
+  padding-left: 1rem;
+}
+
+.stat:first-child { border-left: none; }
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* SECTIONS */
+section { padding: 6rem 2rem; }
+
+.section-inner { max-width: 1200px; margin: 0 auto; }
+
+.section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--orange);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background: var(--orange);
+}
+
+h2 {
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+/* SERVICES */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.service {
+  background: var(--ink);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s;
+}
+
+.service::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: var(--orange);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  transition: all 0.3s;
+}
+
+.service:hover {
+  border-color: var(--orange);
+  transform: translateY(-5px);
+}
+
+.service:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.service-num {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--orange);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.service h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.service p {
+  color: rgba(244, 241, 234, 0.7);
+  font-size: 0.95rem;
+}
+
+/* WHY US */
+.why {
+  background: var(--bone);
+  color: var(--black);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.why-item {
+  border-top: 4px solid var(--orange);
+  padding-top: 1.5rem;
+}
+
+.why-item h4 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 0.6rem;
+}
+
+.why-item p {
+  color: rgba(10, 10, 10, 0.7);
+  font-size: 0.95rem;
+}
+
+.why .section-label { color: var(--black); }
+.why .section-label::before { background: var(--orange); }
+
+/* CTA */
+.cta-section {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 60px,
+    rgba(255, 107, 26, 0.04) 60px 120px
+  );
+}
+
+.cta-box {
+  position: relative;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-box h2 { margin-left: auto; margin-right: auto; }
+
+.contact-info {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.contact-info a {
+  color: var(--orange);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: rgba(244, 241, 234, 0.5);
+}
+
+footer .logo { justify-content: center; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+
+<div class="hazard"></div>
+
+<nav>
+  <div class="logo">
+    <span class="logo-mark">M</span>
+    <span>מוזסון</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">שירותים</a></li>
+    <li><a href="#why">למה אנחנו</a></li>
+    <li><a href="#contact">צור קשר</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">דברו איתנו</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">⚡ זמינות מיידית 24/6</span>
+    <h1>
+      כוח אדם <span class="accent">מקצועי</span><br>
+      שמרים את הבניין שלך
+    </h1>
+    <p class="hero-sub">
+      אנחנו מספקים עובדים מיומנים, אחראים ומנוסים לאתרי בנייה בכל הארץ. 
+      מבעלי מקצוע ועד פועלים פשוטים — בלי פשרות על איכות.
+    </p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">בקש כוח אדם ←</a>
+      <a href="#services" class="btn btn-ghost">השירותים שלנו</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat">
+    <span class="stat-num">+500</span>
+    <span class="stat-label">עובדים פעילים</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">+120</span>
+    <span class="stat-label">פרויקטים</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">24/6</span>
+    <span class="stat-label">זמינות</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">חוקי ומאושר</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">השירותים שלנו</div>
+    <h2>הכל מתחת לקסדה אחת</h2>
+    <div class="services-grid">
+      <div class="service">
+        <span class="service-num">01 / שלד</span>
+        <h3>פועלי שלד</h3>
+        <p>בנאים, ברזלנים וטפסנים מנוסים לעבודות שלד מקיר ועד תקרה.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">02 / גמר</span>
+        <h3>בעלי מקצוע לגמר</h3>
+        <p>טייחים, רצפים, צבעים, גבסנים — בעלי ניסיון מוכח ועבודה איכותית.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">03 / כללי</span>
+        <h3>פועלי עזר</h3>
+        <p>פועלים זמינים לכל משימה באתר — מסבולת ועד ניקיון וסידור.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">04 / ניהול</span>
+        <h3>מנהלי עבודה</h3>
+        <p>מנהלי עבודה מוסמכים שמובילים את האתר ומבטיחים עמידה בלוחות זמנים.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">05 / ציוד</span>
+        <h3>מפעילי ציוד</h3>
+        <p>מפעילי כלים כבדים, מנופאים ונהגי משאיות עם רישיונות תקפים.</p>
+      </div>
+      <div class="service">
+        <span class="service-num">06 / חירום</span>
+        <h3>השלמת כוח אדם</h3>
+        <p>פועל לא הגיע? עובד פוטר? נשלח לך החלפה תוך שעות בודדות.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-label">למה מוזסון</div>
+    <h2>אנחנו לא רק שולחים אנשים. אנחנו לוקחים אחריות.</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <h4>זמינות מיידית</h4>
+        <p>מענה תוך שעה, עובד באתר תוך 24 שעות. גם בסופי שבוע.</p>
+      </div>
+      <div class="why-item">
+        <h4>בדיקה קפדנית</h4>
+        <p>כל עובד עובר ראיון, אימות מסמכים ובדיקת רקע מקצועי לפני שיוצא לאתר.</p>
+      </div>
+      <div class="why-item">
+        <h4>חוקי ומסודר</h4>
+        <p>חוזים, תלושים, ביטוחים — הכל לפי החוק. בלי הפתעות ובלי סיכונים.</p>
+      </div>
+      <div class="why-item">
+        <h4>מחירים הוגנים</h4>
+        <p>תמחור שקוף וברור מראש. בלי עמלות נסתרות, בלי תוספות בסוף החודש.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-box">
+    <div class="section-label" style="justify-content: center;">צור קשר</div>
+    <h2>צריך כוח אדם לאתר?<br>אנחנו <span style="color: var(--orange);">מחר בבוקר</span> אצלך.</h2>
+    <p style="color: rgba(244, 241, 234, 0.7); margin-bottom: 2rem;">
+      ספר לנו מה אתה צריך — ואנחנו דואגים לכל השאר.
+    </p>
+    <div class="cta-row" style="justify-content: center;">
+      <a href="tel:+972000000000" class="btn btn-primary">📞 התקשר עכשיו</a>
+      <a href="mailto:info@mozeson-bu.com" class="btn btn-ghost">שלח מייל ✉</a>
+    </div>
+    <div class="contact-info">
+      <div>📧 <a href="mailto:info@mozeson-bu.com">info@mozeson-bu.com</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard"></div>
+
+<footer>
+  <div class="logo">
+    <span class="logo-mark">M</span>
+    <span>מוזסון</span>
+  </div>
+  <p>כוח אדם מקצועי לענף הבנייה</p>
+  <p style="margin-top: 1rem;">© 2026 Mozeson · כל הזכויות שמורות</p>
+</footer>
+
+</body>
+</html>
